@@ -2,7 +2,8 @@
 
 Deploy your Kubernetes cluster on DigitalOcean using Terraform.
 
-Test your CKA(D) skills
+Test your CKA(D) skills. It is not recommended to use this cluster in production.
+Just play arround and destroy the droplets when your done.
 
 Version deployed of kubernetes 1.20.1-00
 
