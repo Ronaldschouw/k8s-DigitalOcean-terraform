@@ -51,8 +51,14 @@ Your ansible inventory file is supplied automaticly.
 ansible-playbook main.yaml
 ```
 
-You are good to go. Now, we can keep on reading to dive into the specifics.
+You are good to go. Now, install the extar stuff to make life easy.
 
-### Setup `kubectl`
+### Extra Tooling `kubens kubectx fzf bashcompletion and aliases`
+```bash
+Your ansible inventory file is supplied automaticly.
+
+ansible-playbook tool.yaml
+```
+
 
 
