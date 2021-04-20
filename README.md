@@ -46,19 +46,24 @@ terraform apply
 That should do! 
 
 ```bash
-Your ansible inventory file is supplied automaticly.
+Your ansible inventory file is supplied automatically by terraform.
 
 ansible-playbook main.yaml
 ```
 
-You are good to go. Now, install the extar stuff to make life easy.
+You are good to go. Now, install the extra stuff to make life easy.
 
-### Extra Tooling `kubens kubectx fzf bashcompletion and aliases`
+## Extra Tooling `kubens kubectx fzf bashcompletion and aliases`
 ```bash
-Your ansible inventory file is supplied automaticly.
-
 ansible-playbook tool.yaml
 ```
+Add your own alaises to and the tools.yaml
+
+```bash
+To make it easy for you, a number of them have already been added
+```
+
+### Goodluck !
 
 
 
