@@ -1,0 +1,6 @@
+[kubernetes-master-nodes]
+${master_hostname} ansible_ssh_private_key_file=~/.ssh/id_rsa
+
+[kubernetes-worker-nodes]
+${worker1_hostname} ansible_ssh_private_key_file=~/.ssh/id_rsa
+${worker2_hostname} ansible_ssh_private_key_file=~/.ssh/id_rsa

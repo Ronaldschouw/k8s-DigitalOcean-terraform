@@ -1,0 +1,71 @@
+---
+- hosts: kubernetes-master-nodes
+  name: kubens en prompt aanpassen
+  become: yes
+  tasks:
+
+    - name: Install git
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+       - git
+
+    - name: Install kubectx
+      git:
+        repo: https://github.com/ahmetb/kubectx
+        dest: /opt/kubectx
+
+    - name: Install kube-ps
+      git:
+        repo: https://github.com/jonmosco/kube-ps1
+        dest: /opt/kubens
+
+    - name: Install fzf
+      git:
+        repo: https://github.com/junegunn/fzf.git
+        depth: 1
+        dest: /root/fzf
+
+    - name: install script fzf
+      command: /root/fzf/install --all
+
+    - name: bash completion for kubectl
+      command: echo $(kubectl completion bash) >> /root/.bashrc
+
+    - name: Copy kubens to env
+      ansible.builtin.copy:
+        src: /opt/kubectx/kubens
+        dest: /usr/local/sbin/kubens
+        remote_src: yes
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: bashrc aanpassen
+      blockinfile:
+        path: /root/.bashrc
+        block: |
+          KUBE_PS1_SYMBOL_COLOR=blue
+          KUBE_PS1_SYMBOL_USE_IMG=false
+          KUBE_PS1_BINARY=kubectl
+          KUBE_PS1_SYMBOL_ENABLE=false
+          KUBE_PS1_DIVIDER='|'
+          KUBE_PS1_SEPARATOR=''
+          source /opt/kubens/kube-ps1.sh
+          PS1='[\u@\h \W $(kube_ps1)]\$ '
+          # met de prompt rommelen
+          # user edit
+          function get_cluster_short() {
+            echo "$1" | echo "@ "
+          }
+          KUBE_PS1_CLUSTER_FUNCTION=get_cluster_short
+          kubeon
+          #
+          alias k='kubectl'
+          alias kg='kubectl get'
+          alias kp='kubectl get pods'
+          alias kn='kubectl get nodes'
+          alias klo='kubectl logs -f'
+          alias kge='kubectl get events --sort-by='.metadata.creationTimestamp''
+

@@ -1,0 +1,12 @@
+---
+  - name: Re-read facts after adding custom fact
+    ansible.builtin.setup:
+      filter: ansible_local
+
+  - name: debug join command
+    debug:
+      msg: "{{ hostvars['dummy'].join_command }}"
+
+ 
+  - name: join cluster
+    shell: "{{ hostvars['dummy'].join_command }} --ignore-preflight-errors all"

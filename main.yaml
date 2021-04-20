@@ -1,0 +1,12 @@
+---
+- hosts: kubernetes-master-nodes
+  become: yes
+  roles:
+    - common
+    - masters
+
+- hosts: kubernetes-worker-nodes
+  become: yes
+  roles:
+    - common
+    - workers
