@@ -58,12 +58,17 @@ You are good to go. Now, install the extra stuff to make life easy.
 ansible-playbook tool.yaml
 ```
 Add your own alaises to and the tools.yaml
-
-```bash
 To make it easy for you, a number of them have already been added
+```bash
+alias k='kubectl'
+alias kg='kubectl get'
+alias kp='kubectl get pods'
+alias kn='kubectl get nodes'
+alias klo='kubectl logs -f'
+alias kge='kubectl get events --sort-by='.metadata.creationTimestamp''
 ```
 
-### Goodluck !
+### good luck with the exam !
 
 
 
