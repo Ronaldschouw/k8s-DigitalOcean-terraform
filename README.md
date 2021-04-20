@@ -35,13 +35,15 @@ export TF_VAR_ssh_fingerprint=(YOUT DO FINGERPRINT)
 export TF_VAR_pvt_key=/root/.ssh/id_rsa  or your path
 ```
 
-After setup, call `terraform apply`
+After setup, call `terraform`
 
 ```bash
+terraform init
+terraform plan
 terraform apply
 ```
 
-That should do! `kubectl` is configured, so you can just check the nodes (`get no`) and the pods (`get po`).
+That should do! 
 
 ```bash
 $ KUBECONFIG=$PWD/secrets/admin.conf kubectl get no
