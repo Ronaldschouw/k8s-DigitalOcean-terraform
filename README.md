@@ -8,15 +8,6 @@ Deploy your Kubernetes cluster on DigitalOcean using Terraform.
 * DigitalOcean Token [In DO's settings/tokens/new](https://cloud.digitalocean.com/settings/tokens/new)
 * [Terraform](https://www.terraform.io/)
 
-### On Mac
-
-With brew installed, all tools can be installed with
-
-```bash
-brew install terraform kubectl 
-```
-
-Do all the following steps from a development machine. It does not matter _where_ it is, as long as it is connected to the internet. This one will be subsequently used to access the cluster via `kubectl`.
 
 ## Generate private / public keys
 
@@ -30,18 +21,9 @@ The system will prompt you for a file path to save the key, we will go with `~/.
 
 [Do it here](https://cloud.digitalocean.com/settings/security). Name it and paste the public key just below `Add SSH Key`.
 
-## Add this key to your SSH agent
-
-```bash
-eval `ssh-agent -s`
-ssh-add ~/.ssh/id_rsa
-```
 
 ## Invoke Terraform
 
-We put our DigitalOcean token in the file `./secrets/DO_TOKEN` (this directory is mentioned in `.gitignore`, of course, so we don't leak it)
-
-Then we setup the environment variables (step into `this repository` root).
 
 ```bash
 export TF_VAR_do_token=$(cat ./secrets/DO_TOKEN)
