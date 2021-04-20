@@ -44,7 +44,9 @@ terraform plan
 terraform apply
 ```
 
-That should do! 
+That should do!
+
+Remember the output ipv4_address = "xxx.xxx.xx.xxx" to connect to the master after the ansible play.
 
 ```bash
 Your ansible inventory file is supplied automatically by terraform.
