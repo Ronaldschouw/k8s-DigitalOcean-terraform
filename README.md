@@ -71,5 +71,9 @@ alias kge='kubectl get events --sort-by='.metadata.creationTimestamp''
 
 ### good luck with the exam !
 
+## Ready or stuck?
+```bash
+terraform destroy
+```
 
 
