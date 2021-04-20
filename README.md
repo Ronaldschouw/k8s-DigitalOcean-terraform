@@ -2,6 +2,10 @@
 
 Deploy your Kubernetes cluster on DigitalOcean using Terraform.
 
+Test your CKA(D) skills
+
+Version deployed of kubernetes 1.20.1-00
+
 ## Requirements
 
 * [DigitalOcean](https://www.digitalocean.com/) account
@@ -26,26 +30,10 @@ The system will prompt you for a file path to save the key, we will go with `~/.
 
 
 ```bash
-export TF_VAR_do_token=$(cat ./secrets/DO_TOKEN)
-export TF_VAR_ssh_fingerprint=$(ssh-keygen -E MD5 -lf ~/.ssh/id_rsa.pub | awk '{print $2}' | sed 's/MD5://g')
+export TF_VAR_do_token={YOUR DO TOKEN}
+export TF_VAR_ssh_fingerprint=(YOUT DO FINGERPRINT)
+export TF_VAR_pvt_key=/root/.ssh/id_rsa  or your path
 ```
-
-If you are using an older version of OpenSSH (<6.9), replace the last line with
-```bash
-export TF_VAR_ssh_fingerprint=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
-```
-
-There is a convenience script for you in `./setup_terraform.sh`. Invoke it as
-
-```bash
-. ./setup_terraform.sh
-```
-
-Optionally, you can customize the datacenter *region* via:
-```bash
-export TF_VAR_do_region=fra1
-```
-The default region is `nyc3`. You can find a list of available regions from [DigitalOcean](https://developers.digitalocean.com/documentation/v2/#list-all-regions).
 
 After setup, call `terraform apply`
 
