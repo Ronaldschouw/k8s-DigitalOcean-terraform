@@ -31,7 +31,7 @@ The system will prompt you for a file path to save the key, we will go with `~/.
 
 ```bash
 export TF_VAR_do_token={YOUR DO TOKEN}
-export TF_VAR_ssh_fingerprint=(YOUT DO FINGERPRINT)
+export TF_VAR_ssh_fingerprint=(YOUR DO FINGERPRINT)
 export TF_VAR_pvt_key=/root/.ssh/id_rsa  or your path
 ```
 
@@ -46,41 +46,13 @@ terraform apply
 That should do! 
 
 ```bash
-$ KUBECONFIG=$PWD/secrets/admin.conf kubectl get no
-NAME          LABELS                               STATUS
-X.X.X.X   kubernetes.io/hostname=X.X.X.X   Ready     2m
-Y.Y.Y.Y   kubernetes.io/hostname=Y.Y.Y.Y   Ready     2m
+Your ansible inventory file is supplied automaticly.
 
-$ KUBECONFIG=$PWD/secrets/admin.conf kubectl --namespace=kube-system get po
-NAME                                   READY     STATUS    RESTARTS   AGE
-kube-apiserver-X.X.X.X                    1/1       Running   0          13m
-kube-controller-manager-X.X.X.X           1/1       Running   0          12m
-kube-proxy-X.X.X.X                        1/1       Running   0          12m
-kube-proxy-X.X.X.X                        1/1       Running   0          11m
-kube-proxy-X.X.X.X                        1/1       Running   0          12m
-kube-scheduler-X.X.X.X                    1/1       Running   0          13m
+ansible-playbook main.yaml
 ```
 
 You are good to go. Now, we can keep on reading to dive into the specifics.
 
 ### Setup `kubectl`
 
-After the installation is complete, `terraform` will put the kubeconfig in `secrets/admin.conf`. Test your brand new cluster
 
-```bash
-KUBECONF=$PWD/secrets/admin.conf kubectl get nodes
-```
-
-You should get something similar to
-
-```
-$ kubectl get nodes
-NAME          LABELS                               STATUS
-X.X.X.X       kubernetes.io/hostname=X.X.X.X       Ready
-```
-
-### Deploy microbot with External IP
-
-The file `04-microbot.yaml` will be rendered (i.e. replace the value `EXT_IP1`), and then `kubectl` will create the Service and Replication Controller.
-
-To see the IP of the service, run `kubectl get svc` and look for the `EXTERNAL-IP` (should be the first worker's ext-ip).
