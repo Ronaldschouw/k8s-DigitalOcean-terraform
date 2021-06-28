@@ -10,9 +10,9 @@ packages:
 - docker-ce-19.03.8
 - docker-ce-cli-19.03.8
 - containerd.io-1.2.13
-- kubelet-1.20.1-0
-- kubeadm-1.20.1-0
-- kubectl-1.20.1-0
+- kubelet-1.21.1-0
+- kubeadm-1.21.1-0
+- kubectl-1.21.1-0
 
 services:
 - firewalld
