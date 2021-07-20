@@ -69,3 +69,7 @@
           alias klo='kubectl logs -f'
           alias kge='kubectl get events --sort-by='.metadata.creationTimestamp''
 
+
+    - name: install metrics server for top
+      command: kubectl apply -f https://raw.githubusercontent.com/Ronaldschouw/k8s-DigitalOcean-terraform/master/metrics-server.yaml
+
