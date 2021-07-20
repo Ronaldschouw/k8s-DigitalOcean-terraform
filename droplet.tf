@@ -4,7 +4,7 @@ resource "digitalocean_vpc" "lb_vpc" {
 }
 
 resource "digitalocean_droplet" "master" {
-  image              = "ubuntu-20-10-x64"
+  image              = "ubuntu-18-04-x64"
   name               = "master"
   region             = "ams3"
   vpc_uuid           = digitalocean_vpc.lb_vpc.id
@@ -22,7 +22,7 @@ resource "digitalocean_droplet" "master" {
   }
 }
 resource "digitalocean_droplet" "worker1" {
-  image              = "ubuntu-20-10-x64"
+  image              = "ubuntu-18-04-x64"
   name               = "worker1"
   region             = "ams3"
   vpc_uuid           = digitalocean_vpc.lb_vpc.id
